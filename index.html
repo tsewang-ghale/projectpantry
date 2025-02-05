@@ -3,94 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regional Food Bank of Oklahoma Online Shopping Form</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Regional Food Bank of Oklahoma Online Order Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container mt-5">
-        <h2 class="text-center">Regional Food Bank of Oklahoma Online Shopping Form</h2>
-        <form>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="readInstructions" required>
-                <label class="form-check-label" for="readInstructions">Did you read the following instructions? Check the box when done.</label>
+<body class="bg-light">
+    <div class="container mt-4">
+        <div class="text-center">
+            <img src="Regional-Food-Bank-Logo-Stacked-Color-e1644958656502.png" alt="Regional Food Bank Logo" class="img-fluid" style="max-width: 300px;">
+            <h2 class="mt-3">Regional Food Bank of Oklahoma</h2>
+            <h4>Online Shopping Form</h4>
+        </div>
+        
+        <form class="mt-4 p-4 bg-white rounded shadow">
+            <div class="mb-3">
+                <label class="form-check-label">
+                    <input type="checkbox" required> Did you read the following instructions? Check the box when done.
+                </label>
             </div>
             
-            <h4 class="mt-4">Location Operating Hours</h4>
-            <ul>
-                <li>Tuesday: 2:30 PM - 5:30 PM (Arrive 30 minutes before closing)</li>
-                <li>Wednesday: 2:30 PM - 5:30 PM (Arrive 30 minutes before closing)</li>
-                <li>Thursday: 11:00 AM - 2:00 PM (Arrive 30 minutes before closing)</li>
-                <li>Friday: 11:00 AM - 2:00 PM (Arrive 30 minutes before closing)</li>
-            </ul>
+            <h5>Location Operating Hours</h5>
+            <p>Tuesday & Wednesday: 2:30 PM - 5:30 PM (Arrive 30 min before closing)</p>
+            <p>Thursday & Friday: 11:00 AM - 2:00 PM (Arrive 30 min before closing)</p>
+            
+            <h5>Pantry Guidelines</h5>
+            <p>Have an ID (physical card or mobile)—please check in at the desk first.</p>
             
             <div class="mb-3">
                 <label for="name" class="form-label">Name (First & Last):</label>
-                <input type="text" class="form-control" id="name" required>
+                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
             </div>
             
-            <h5 class="mt-3">Pantry Usage Guidelines</h5>
-            <p>Bring your ID (physical or mobile). You may shop once a week.</p>
+            <h5>Household Information</h5>
+            <label>How many people are in your household?</label>
+            <select class="form-select mb-3" required>
+                <option value="">Select</option>
+                <option value="1">Individual (1)</option>
+                <option value="2">Family (2 or more)</option>
+            </select>
             
-            <div class="mb-3">
-                <label for="dietaryRestrictions" class="form-label">Do you have dietary restrictions? (Optional)</label>
-                <input type="text" class="form-control" id="dietaryRestrictions">
-            </div>
-            
-            <h5>Household Size</h5>
+            <h5>Food Selection</h5>
+            <label>Breakfast/Sandwich Items (Choose up to 3):</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="household" id="individual" required>
-                <label class="form-check-label" for="individual">Individual (1)</label>
+                <input class="form-check-input" type="checkbox"> Peanut Butter
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="household" id="family" required>
-                <label class="form-check-label" for="family">Family (2 or more)</label>
-            </div>
-            
-            <h5 class="mt-3">Food Selection</h5>
-            <h6>Breakfast/Sandwich Items (Max 3)</h6>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="peanutButter">
-                <label class="form-check-label" for="peanutButter">Peanut Butter</label>
+                <input class="form-check-input" type="checkbox"> Cornflakes
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="cornflakes">
-                <label class="form-check-label" for="cornflakes">Cornflakes</label>
+                <input class="form-check-input" type="checkbox"> Cornbread Mix
             </div>
             
-            <h6>Vegetables (No Maximum)</h6>
+            <h6 class="mt-3">Vegetables (No Maximum)</h6>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="dicedTomatoes">
-                <label class="form-check-label" for="dicedTomatoes">Diced Tomatoes (Canned)</label>
+                <input class="form-check-input" type="checkbox"> Diced Tomatoes (canned)
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"> Green beans (canned)
             </div>
             
-            <h6>Protein (Max 3)</h6>
+            <h6 class="mt-3">Protein (Choose up to 3)</h6>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="chicken">
-                <label class="form-check-label" for="chicken">Chicken (Canned)</label>
+                <input class="form-check-input" type="checkbox"> Chicken (canned)
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"> Tuna (canned)
             </div>
             
-            <h6>Toiletries/Household (No Maximum)</h6>
+            <h6 class="mt-3">Toiletries</h6>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="deodorant">
-                <label class="form-check-label" for="deodorant">Deodorant</label>
+                <input class="form-check-input" type="checkbox"> Deodorant
             </div>
             
-            <h6>Menstrual Products (No Maximum)</h6>
+            <h6 class="mt-3">Menstrual Products</h6>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="tamponsRegular">
-                <label class="form-check-label" for="tamponsRegular">Tampons (Regular)</label>
+                <input class="form-check-input" type="checkbox"> Tampons (Regular)
             </div>
             
             <div class="mb-3 mt-3">
-                <label for="feedback" class="form-label">Items you would like to see more of at the pantry? (Optional)</label>
-                <textarea class="form-control" id="feedback" rows="3"></textarea>
+                <label for="suggestions" class="form-label">Are there items you’d like to see more of at the pantry? (Optional)</label>
+                <textarea id="suggestions" class="form-control" rows="2"></textarea>
             </div>
             
-            <button type="submit" class="btn btn-primary">Submit Order</button>
+            <button type="submit" class="btn btn-success w-100">Submit Order</button>
         </form>
-        <p class="mt-4">Your order will be ready for pickup during our operation hours.</p>
-        <p><strong>Contact Us:</strong> 405-972-1111 | Email: info@rfbo.org</p>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
