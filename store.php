@@ -1,24 +1,33 @@
 <?php
+// store.php - Handles form submissions securely
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Fetch form data
-    $name = $_POST['name'] ?? 'Not provided';
-    $household = $_POST['household'] ?? 'Not provided';
-    $suggestions = $_POST['suggestions'] ?? 'None';
+    // Sanitize input data
+    function sanitize($data) {
+        return htmlspecialchars(stripslashes(trim($data)));
+    }
 
-    // Fetch checkbox values
-    $breakfast_items = isset($_POST['breakfast']) ? implode(", ", $_POST['breakfast']) : "None";
-    $vegetables = isset($_POST['vegetables']) ? implode(", ", $_POST['vegetables']) : "None";
-    $protein = isset($_POST['protein']) ? implode(", ", $_POST['protein']) : "None";
-    $toiletries = isset($_POST['toiletries']) ? implode(", ", $_POST['toiletries']) : "None";
-    $menstrual = isset($_POST['menstrual']) ? implode(", ", $_POST['menstrual']) : "None";
+    $name = sanitize($_POST['name'] ?? '');
+    $household = sanitize($_POST['household'] ?? '');
+    $items = isset($_POST['items']) ? array_map('sanitize', $_POST['items']) : [];
+    $suggestions = sanitize($_POST['suggestions'] ?? '');
 
-    // Store data in a file
-    $file = fopen("orders.txt", "a");
-    fwrite($file, "Name: $name\nHousehold: $household\nBreakfast Items: $breakfast_items\nVegetables: $vegetables\nProtein: $protein\nToiletries: $toiletries\nMenstrual Products: $menstrual\nSuggestions: $suggestions\n-----------------------\n");
-    fclose($file);
+    if (!$name || !$household) {
+        die("<p>Error: Missing required fields.</p><a href='index.html'>Go Back</a>");
+    }
 
-    // Redirect to Thank You page
+    // Store order in a file (or use a database)
+    $orderData = [
+        'name' => $name,
+        'household' => $household,
+        'items' => implode(", ", $items),
+        'suggestions' => $suggestions,
+        'date' => date('Y-m-d H:i:s')
+    ];
+    
+    file_put_contents('orders.json', json_encode($orderData) . "\n", FILE_APPEND);
+
+    // Redirect to thank you page
     header("Location: thankyou.html");
-    exit();
+    exit;
 }
 ?>
