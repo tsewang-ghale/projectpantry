@@ -1,55 +1,163 @@
-<form class="mt-4 p-4 bg-white rounded shadow" action="store.php" method="POST">
-    <div class="mb-3">
-        <label class="form-check-label">
-            <input type="checkbox" required> Did you read the following instructions? Check the box when done.
-        </label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Order Form | Regional Food Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 700px;
+        }
+        .form-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-success:hover {
+            background-color: #28a745;
+            opacity: 0.9;
+        }
+        .progress {
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="text-center">
+        <img src="Regional-Food-Bank-Logo-Stacked-Color-e1644958656502.png" alt="Regional Food Bank Logo" class="img-fluid" style="max-width: 250px;">
+        <h4 class="mt-3">Online Shopping Form</h4>
     </div>
 
-    <div class="mb-3">
-        <label for="name" class="form-label">Name (First & Last):</label>
-        <input type="text" id="name" name="name" class="form-control" required>
-    </div>
+    <form class="mt-4 form-section" id="orderForm">
+        <div class="mb-3">
+            <label class="form-check-label">
+                <input type="checkbox" required> I have read the instructions.
+            </label>
+        </div>
 
-    <label>How many people are in your household?</label>
-    <select class="form-select mb-3" name="household" required>
-        <option value="">Select</option>
-        <option value="1">Individual (1)</option>
-        <option value="2">Family (2 or more)</option>
-    </select>
+        <h5>Location Operating Hours</h5>
+        <ul>
+            <li>Tuesday & Wednesday: 2:30 PM - 5:30 PM (Arrive 30 min before closing)</li>
+            <li>Thursday & Friday: 11:00 AM - 2:00 PM (Arrive 30 min before closing)</li>
+        </ul>
 
-    <h5>Food Selection</h5>
-    <label>Breakfast/Sandwich Items (Choose up to 3):</label>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="breakfast[]" value="Peanut Butter"> Peanut Butter
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="breakfast[]" value="Cornflakes"> Cornflakes
-    </div>
-    
-    <h6 class="mt-3">Vegetables (No Maximum)</h6>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="vegetables[]" value="Diced Tomatoes"> Diced Tomatoes (canned)
-    </div>
+        <h5>Pantry Guidelines</h5>
+        <p>Have an ID (physical card or mobile)—please check in at the desk first.</p>
 
-    <h6 class="mt-3">Protein (Choose up to 3)</h6>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="protein[]" value="Chicken"> Chicken (canned)
-    </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name (First & Last):</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+        </div>
 
-    <h6 class="mt-3">Toiletries</h6>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="toiletries[]" value="Deodorant"> Deodorant
-    </div>
+        <h5>Household Information</h5>
+        <label>How many people are in your household?</label>
+        <select class="form-select mb-3" required>
+            <option value="">Select</option>
+            <option value="1">Individual (1)</option>
+            <option value="2">Family (2 or more)</option>
+        </select>
 
-    <h6 class="mt-3">Menstrual Products</h6>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="menstrual[]" value="Tampons"> Tampons (Regular)
-    </div>
+        <div class="text-center mt-3">
+            <a href="foodpantry_list.php" class="btn btn-primary">View Food Pantry List</a>
+        </div>
 
-    <div class="mb-3 mt-3">
-        <label for="suggestions" class="form-label">Are there items you’d like to see more of at the pantry? (Optional)</label>
-        <textarea id="suggestions" name="suggestions" class="form-control" rows="2"></textarea>
-    </div>
+        <hr>
 
-    <button type="submit" class="btn btn-success w-100">Submit Order</button>
-</form>
+        <h5>Food Selection</h5>
+
+        <label>Breakfast/Sandwich Items (Choose up to 3):</label>
+        <div class="form-check">
+            <input class="form-check-input breakfast-checkbox" type="checkbox"> Peanut Butter
+        </div>
+        <div class="form-check">
+            <input class="form-check-input breakfast-checkbox" type="checkbox"> Cornflakes
+        </div>
+        <div class="form-check">
+            <input class="form-check-input breakfast-checkbox" type="checkbox"> Cornbread Mix
+        </div>
+
+        <h6 class="mt-3">Vegetables (No Maximum)</h6>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox"> Diced Tomatoes (canned)
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox"> Green beans (canned)
+        </div>
+
+        <h6 class="mt-3">Protein (Choose up to 3)</h6>
+        <div class="form-check">
+            <input class="form-check-input protein-checkbox" type="checkbox"> Chicken (canned)
+        </div>
+        <div class="form-check">
+            <input class="form-check-input protein-checkbox" type="checkbox"> Tuna (canned)
+        </div>
+
+        <h6 class="mt-3">Toiletries</h6>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox"> Deodorant
+        </div>
+
+        <h6 class="mt-3">Menstrual Products</h6>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox"> Tampons (Regular)
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="suggestions" class="form-label">Are there items you’d like to see more of at the pantry? (Optional)</label>
+            <textarea id="suggestions" class="form-control" rows="2" placeholder="Type your suggestions here..."></textarea>
+        </div>
+
+        <div class="progress mt-3 mb-3">
+            <div class="progress-bar" id="formProgress" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Submit Order</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const breakfastCheckboxes = document.querySelectorAll('.breakfast-checkbox');
+        const proteinCheckboxes = document.querySelectorAll('.protein-checkbox');
+        const form = document.getElementById("orderForm");
+        const progressBar = document.getElementById("formProgress");
+
+        function enforceCheckboxLimit(checkboxes, limit) {
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    let checkedCount = Array.from(checkboxes).filter(c => c.checked).length;
+                    if (checkedCount > limit) {
+                        this.checked = false;
+                        alert(`You can only select up to ${limit} items in this category.`);
+                    }
+                });
+            });
+        }
+
+        function updateProgress() {
+            let filledFields = Array.from(form.elements).filter(el => el.type !== "checkbox" && el.value.trim() !== "").length;
+            let checkedBoxes = form.querySelectorAll('input[type="checkbox"]:checked').length;
+            let totalFields = form.elements.length;
+            let progress = Math.min(((filledFields + checkedBoxes) / totalFields) * 100, 100);
+            progressBar.style.width = progress + "%";
+            progressBar.setAttribute("aria-valuenow", progress);
+        }
+
+        form.addEventListener("input", updateProgress);
+
+        enforceCheckboxLimit(breakfastCheckboxes, 3);
+        enforceCheckboxLimit(proteinCheckboxes, 3);
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
