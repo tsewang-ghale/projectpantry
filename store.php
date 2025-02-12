@@ -1,19 +1,20 @@
 <?php
-// store.php - Process the form submission and store data in a file or database
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitted"])) {
+    $name = htmlspecialchars($_POST["name"]);
+    $food_items = isset($_POST["food"]) ? $_POST["food"] : [];
+    $toiletries = isset($_POST["toiletries"]) ? $_POST["toiletries"] : [];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $household_size = htmlspecialchars($_POST['household_size']);
-    $suggestions = htmlspecialchars($_POST['suggestions']);
-    
-    $food_selection = isset($_POST['food_selection']) ? implode(", ", $_POST['food_selection']) : "None";
-    
-    // Store data in a CSV file (can be replaced with a database insert)
-    $file = fopen("orders.csv", "a");
-    fputcsv($file, [$name, $household_size, $food_selection, $suggestions]);
-    fclose($file);
-    
-    // Redirect to thank you page
+    // Store order details (For simplicity, saving in a text file)
+    $order_details = "Name: $name\nFood Items: " . implode(", ", $food_items) . "\nToiletries: " . implode(", ", $toiletries) . "\n\n";
+    file_put_contents("orders.txt", $order_details, FILE_APPEND);
+
+    // Print Order for confirmation
+    echo "<h2>Order Summary</h2>";
+    echo "<p><strong>Name:</strong> $name</p>";
+    echo "<p><strong>Food Items:</strong> " . implode(", ", $food_items) . "</p>";
+    echo "<p><strong>Toiletries:</strong> " . implode(", ", $toiletries) . "</p>";
+
+    // Redirect to Thank You Page
     header("Location: thankyou.html");
     exit();
 }
