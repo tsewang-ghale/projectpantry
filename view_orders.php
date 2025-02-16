@@ -1,8 +1,11 @@
 <?php
 echo "<h2>All Orders</h2>";
+
 if (file_exists("orders.txt")) {
-    echo nl2br(file_get_contents("orders.txt"));
+    // Get the file contents and sanitize output
+    $orders = file_get_contents("orders.txt");
+    echo "<pre>" . htmlspecialchars($orders) . "</pre>";
 } else {
-    echo "No orders yet.";
+    echo "<p>No orders yet.</p>";
 }
 ?>
