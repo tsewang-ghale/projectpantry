@@ -10,11 +10,6 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Pantry Food Items</h1>
 
-        <!-- Back to Home Button -->
-        <div class="text-center mb-4">
-            <a href="/" class="btn btn-success">Back to Home</a>
-        </div>
-
         <div class="row">
             <div class="col-md-6">
                 <h3>Grains & Pasta</h3>
@@ -99,7 +94,12 @@
                 </ul>
             </div>
         </div>
+         <!-- Back to Home Button -->
+        <div class="text-center mb-4">
+            <a href="/" class="btn btn-success">Back to Home</a>
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
