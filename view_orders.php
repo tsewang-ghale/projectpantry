@@ -1,5 +1,5 @@
 <?php
-echo "<h2>Order Details</h2>";
+echo "<h2>Most Recent Order</h2>";
 
 if (file_exists("orders.txt")) {
     // Get the file contents
@@ -18,7 +18,7 @@ if (file_exists("orders.txt")) {
 
         // Display the order details in a receipt format
         echo "<div style='border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;'>";
-        
+
         // Iterate through each order detail and display it
         foreach ($orderDetails as $detail) {
             // Trim any extra spaces
