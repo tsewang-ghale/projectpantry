@@ -9,6 +9,12 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Pantry Food Items</h1>
+
+        <!-- Back to Home Button -->
+        <div class="text-center mb-4">
+            <a href="/" class="btn btn-success">Back to Home</a>
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <h3>Grains & Pasta</h3>
