@@ -1,5 +1,5 @@
 <?php
-echo "<h2>All Orders</h2>";
+echo "<h2>Order Details</h2>";
 
 if (file_exists("orders.txt")) {
     // Get the file contents
@@ -8,13 +8,13 @@ if (file_exists("orders.txt")) {
     // Split the orders into individual orders (assuming each order is separated by a double newline)
     $orderLines = explode("\n\n", $orders);
 
-    // Iterate through each order and format it into a receipt
-    foreach ($orderLines as $order) {
-        // Skip empty orders
-        if (empty($order)) continue;
+    // Check if there are any orders
+    if (count($orderLines) > 0) {
+        // Get the last (most recent) order
+        $lastOrder = $orderLines[count($orderLines) - 1];
 
-        // Split order details by newline (each line has a specific part like Name, Food, etc.)
-        $orderDetails = explode("\n", $order);
+        // Split the last order details by newline (each line has a specific part like Name, Food, etc.)
+        $orderDetails = explode("\n", $lastOrder);
 
         // Display the order details in a receipt format
         echo "<div style='border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;'>";
@@ -30,6 +30,8 @@ if (file_exists("orders.txt")) {
 
         // Close the order display div
         echo "</div>";
+    } else {
+        echo "<p>No orders yet.</p>";
     }
 } else {
     echo "<p>No orders yet.</p>";
