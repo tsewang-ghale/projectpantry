@@ -39,6 +39,8 @@ $order = $_SESSION['order'];
             <p><strong>Date and Time:</strong> <?php echo htmlspecialchars($order['date_time']); ?></p>
             <p><strong>Name:</strong> <?php echo htmlspecialchars($order['name']); ?></p>
 
+            <p><strong>Household Size:</strong> <?php echo htmlspecialchars($order['household_size']); ?></p>
+
             <p><strong>Food Items:</strong></p>
             <ul>
                 <?php foreach ($order['food_items'] as $food) { ?>
