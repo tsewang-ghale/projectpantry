@@ -22,6 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitted"])) {
         'toiletries' => $toiletries,
         'date_time' => date("Y-m-d H:i:s")
     ];
+       
+
 
     // Log the order details in a file for employee access
     $order_details = "Name: $name\nHousehold Size: $household_size\nFood Items: " . implode(", ", $food_items) . "\nToiletries: " . implode(", ", $toiletries) . "\nDate: " . date("Y-m-d H:i:s") . "\n\n";
