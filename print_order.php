@@ -51,5 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
 
     <a href="store.php">Submit Another Order</a> | <a href="view_orders.php">View All Orders</a>
+    <a href="logout.php">Logout</a>
+
 </body>
 </html>
