@@ -1,70 +1,55 @@
 <?php
-session_start(); // Start the session to retrieve the stored order
-
-// Check if an order has been stored in the session
-if (!isset($_SESSION['order'])) {
-    echo "No order details available.";
+session_start();
+if (!isset($_SESSION['employee_logged_in']) || $_SESSION['employee_logged_in'] !== true) {
+    header('Location: login.php');
     exit();
 }
-
-$order = $_SESSION['order'];
 ?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $household_size = $_POST['household_size'];
+    $food = isset($_POST['food']) ? $_POST['food'] : [];
+    $toiletries = isset($_POST['toiletries']) ? $_POST['toiletries'] : [];
+
+    $order = [
+        'name' => $name,
+        'household_size' => $household_size,
+        'food' => $food,
+        'toiletries' => $toiletries,
+        'timestamp' => date("Y-m-d H:i:s")
+    ];
+
+    // Save order to a JSON file
+    $orders = file_exists('orders.json') ? json_decode(file_get_contents('orders.json'), true) : [];
+    $orders[] = $order;
+    file_put_contents('orders.json', json_encode($orders, JSON_PRETTY_PRINT));
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Receipt</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            padding: 20px;
-        }
-        .order-receipt {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 20px;
-            background-color: #f9f9f9;
-        }
-        .order-receipt p {
-            margin: 5px 0;
-        }
-    </style>
+    <title>Order Confirmation</title>
 </head>
 <body>
-    <div class="container">
-        <h2 class="text-center mb-4">Your Order Receipt</h2>
+    <h2>Order Confirmation</h2>
+    <p>Thank you, <strong><?php echo htmlspecialchars($name); ?></strong>!</p>
+    <p>Household Size: <?php echo htmlspecialchars($household_size); ?></p>
 
-        <div class="order-receipt">
-            <p><strong>Date and Time:</strong> <?php echo htmlspecialchars($order['date_time']); ?></p>
-            <p><strong>Name:</strong> <?php echo htmlspecialchars($order['name']); ?></p>
+    <h3>Food Items:</h3>
+    <ul>
+        <?php foreach ($food as $item) { echo "<li>" . htmlspecialchars($item) . "</li>"; } ?>
+    </ul>
 
-            <p><strong>Household Size:</strong> <?php echo htmlspecialchars($order['household_size']); ?></p>
+    <h3>Toiletries:</h3>
+    <ul>
+        <?php foreach ($toiletries as $item) { echo "<li>" . htmlspecialchars($item) . "</li>"; } ?>
+    </ul>
 
-            <p><strong>Food Items:</strong></p>
-            <ul>
-                <?php foreach ($order['food_items'] as $food) { ?>
-                    <li><?php echo htmlspecialchars($food); ?></li>
-                <?php } ?>
-            </ul>
-
-            <p><strong>Toiletries:</strong></p>
-            <ul>
-                <?php foreach ($order['toiletries'] as $toiletry) { ?>
-                    <li><?php echo htmlspecialchars($toiletry); ?></li>
-                <?php } ?>
-            </ul>
-        </div>
-
-        <!-- Print Button -->
-        <div class="text-center">
-            <button class="btn btn-success" onclick="window.print()">Print Order</button>
-        </div>
-    </div>
+    <a href="store.php">Submit Another Order</a> | <a href="view_orders.php">View All Orders</a>
 </body>
 </html>
-
-<?php
-// Clear the order from the session after printing
-session_unset();
-?>
