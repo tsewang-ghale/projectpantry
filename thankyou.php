@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitted"])) {
         <h1 class="text-success">Thank You for Your Order!</h1>
         <p class="mt-3">Your order has been successfully submitted. We will process it shortly.</p>
         <a href="index.php" class="btn btn-primary mt-4">Place Another Order</a>
+       
     </div>
 </body>
 </html>
