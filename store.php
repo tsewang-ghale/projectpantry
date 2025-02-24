@@ -13,7 +13,7 @@
             <h4>Online Shopping Form</h4>
         </div>
         
-        <form action="store.php" method="POST" class="mt-4 p-4 bg-white rounded shadow">
+        <form action="thankyou.php" method="POST" class="mt-4 p-4 bg-white rounded shadow">
             <div class="mb-3">
                 <label class="form-check-label">
                     <input type="checkbox" required> Did you read the following instructions? Check the box when done.
