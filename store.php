@@ -1,4 +1,6 @@
 <?php
+session_start(); // Start the session
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitted"])) {
     // Sanitize form inputs
     $name = htmlspecialchars($_POST["name"]);
@@ -12,17 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitted"])) {
         exit();
     }
 
-    // Save the order details into a file (orders.txt)
+    // Save the order details into a session
+    $_SESSION['order'] = [
+        'name' => $name,
+        'household_size' => $household_size,
+        'food_items' => $food_items,
+        'toiletries' => $toiletries,
+        'date_time' => date("Y-m-d H:i:s")
+    ];
+
+    // Log the order details in a file for employee access
     $order_details = "Name: $name\nHousehold Size: $household_size\nFood Items: " . implode(", ", $food_items) . "\nToiletries: " . implode(", ", $toiletries) . "\nDate: " . date("Y-m-d H:i:s") . "\n\n";
 
-    // Store order details in the orders.txt file
-    if (file_put_contents("orders.txt", $order_details, FILE_APPEND) === false) {
+    // Store the order details in the orders_log.txt file (append mode)
+    if (file_put_contents("orders_log.txt", $order_details, FILE_APPEND) === false) {
         echo "There was an error saving your order.";
         exit();
     }
 
-    // Redirect to Thank You page, passing the order data
-    header("Location: thankyou.html?name=" . urlencode($name) . "&food=" . urlencode(implode(", ", $food_items)) . "&toiletries=" . urlencode(implode(", ", $toiletries)) . "&household_size=" . urlencode($household_size));
+    // Redirect to the print order page
+    header("Location: print_order.php");
     exit();
 }
 ?>
