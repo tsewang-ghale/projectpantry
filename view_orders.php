@@ -40,5 +40,7 @@ $orders = file_exists('orders.json') ? json_decode(file_get_contents('orders.jso
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
+<a href="logout.php">Logout</a>
+
 </body>
 </html>
