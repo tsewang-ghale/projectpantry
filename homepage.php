@@ -63,9 +63,6 @@ session_start();
         <a href="print_order.php">
             <button class="btn">Print Orders</button>
         </a>
-        <a href="logout.php">
-            <button class="btn">Logout</button>
-        </a>
     <?php endif; ?>
 </body>
 </html>
