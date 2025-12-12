@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "YOUR_USERNAME", "YOUR_PASSWORD", "YOUR_DATABASE");
+$conn = new mysqli("localhost", "tsewangg_pantryuser", "smd19Tse@2001", "tsewangg_projectpantry");
 
 $order_id = $_GET['order_id'];
 
