@@ -11,7 +11,7 @@ session_start();
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #4CAF50; /* Green background */
+            background-color: #3498db; /* Green background */
             color: white;
             text-align: center;
             margin-top: 50px;
@@ -30,7 +30,7 @@ session_start();
             border-radius: 5px;
         }
         .btn:hover {
-            background-color: #45a049;
+            background-color: #3498db;
             color: white;
         }
         .logo {
