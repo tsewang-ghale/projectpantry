@@ -1,6 +1,6 @@
 <?php
 // Connect to database
-$conn = new mysqli("localhost", "YOUR_USERNAME", "YOUR_PASSWORD", "YOUR_DATABASE");
+$conn = new mysqli("localhost", "tsewangg_pantryuser", "smd19Tse@2001", "tsewangg_projectpantry");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
