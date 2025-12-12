@@ -23,36 +23,6 @@ session_start();
             line-height: 1.6;
         }
 
-        /* Top Banner */
-        .top-banner {
-            background-color: #D32F2F; /* Red color */
-            color: white;
-            text-align: center;
-            padding: 15px 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .top-banner-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .donate-btn {
-            background-color: white;
-            color: #D32F2F;
-            border: none;
-            padding: 8px 20px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
         /* Header Navigation */
         .main-header {
             background-color: #fff;
@@ -87,7 +57,7 @@ session_start();
         }
 
         .nav-links a:hover {
-            color: #D32F2F;
+            color: #4CAF50; /* Green on hover */
         }
 
         /* Main Content */
@@ -99,7 +69,7 @@ session_start();
         }
 
         .page-title {
-            color: #D32F2F;
+            color: #4CAF50; /* Green title */
             font-size: 32px;
             margin-bottom: 40px;
             font-weight: bold;
@@ -113,14 +83,15 @@ session_start();
         }
 
         .order-section {
-            background-color: #f8f9fa;
+            background-color: #f0f8f0; /* Light green background */
             padding: 40px;
             border-radius: 8px;
             margin-bottom: 40px;
+            border: 1px solid #e0f0e0;
         }
 
         .btn {
-            background-color: #D32F2F; /* Red button */
+            background-color: #4CAF50; /* Green button */
             color: white;
             border: none;
             padding: 15px 40px;
@@ -131,17 +102,20 @@ session_start();
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
 
         .btn:hover {
-            background-color: #B71C1C; /* Darker red on hover */
+            background-color: #45a049; /* Darker green */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .employee-section {
             background-color: #f8f9fa;
             padding: 30px;
             border-radius: 8px;
+            border: 1px solid #eee;
         }
 
         .employee-buttons {
@@ -153,7 +127,7 @@ session_start();
         }
 
         .employee-btn {
-            background-color: #2C3E50;
+            background-color: #4CAF50; /* Green */
             color: white;
             border: none;
             padding: 12px 25px;
@@ -162,18 +136,20 @@ session_start();
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s;
         }
 
         .employee-btn:hover {
-            background-color: #1a252f;
+            background-color: #45a049;
+            transform: translateY(-1px);
         }
 
         .logout-btn {
-            background-color: #7f8c8d;
+            background-color: #757575; /* Gray for logout */
         }
 
         .logout-btn:hover {
-            background-color: #666;
+            background-color: #616161;
         }
 
         /* Footer */
@@ -204,6 +180,7 @@ session_start();
 
         .footer-links a:hover {
             text-decoration: underline;
+            color: #4CAF50; /* Green on hover */
         }
 
         .copyright {
@@ -212,13 +189,18 @@ session_start();
             color: #bdc3c7;
         }
 
+        /* Welcome message styling */
+        .welcome-message {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            .top-banner-content {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
             .header-content {
                 flex-direction: column;
                 gap: 20px;
@@ -242,14 +224,6 @@ session_start();
     </style>
 </head>
 <body>
-    <!-- Top Banner -->
-    <div class="top-banner">
-        <div class="top-banner-content">
-            <span>MAKE YOUR YEAR-END GIFT BY MIDNIGHT ON DEC. 31 TO DOUBLE YOUR IMPACT!</span>
-            <button class="donate-btn">DOUBLE MY IMPACT</button>
-        </div>
-    </div>
-
     <!-- Main Header with Navigation -->
     <header class="main-header">
         <div class="header-content">
@@ -269,12 +243,14 @@ session_start();
     <!-- Main Content -->
     <main class="main-content">
         <h1 class="page-title">Online Ordering System</h1>
+        <p class="welcome-message">Welcome to the Regional Food Bank of Oklahoma's online ordering system. 
+        Browse available pantry items and place your order conveniently online.</p>
         
         <!-- Order Section -->
         <div class="order-section">
             <h2 class="section-title">Place Your Food Pantry Order</h2>
-            <p>Browse available items and submit your order online for convenient pickup.</p>
-            <a href="orderpage.php">
+            <p>Select from available items and submit your order for pickup.</p>
+            <a href="orderpage.html">
                 <button class="btn">Place Online Order</button>
             </a>
         </div>
