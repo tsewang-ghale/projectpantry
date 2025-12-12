@@ -230,7 +230,7 @@ session_start();
             <img src="Logo.png" alt="Regional Food Bank Logo" class="logo">
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact Information</a></li>
                 </ul>
             </nav>
