@@ -247,7 +247,7 @@ session_start();
         <div class="order-section">
             <h2 class="section-title">Place Your Food Pantry Order</h2>
             <p>Select from available items and submit your order for pickup.</p>
-            <a href="orderpage.html">
+            <a href="orderpage.php">
                 <button class="btn">Place Online Order</button>
             </a>
         </div>
