@@ -46,7 +46,7 @@ session_start();
     <h1>Welcome to the Online Ordering System for Regional Food Bank Of Oklahoma</h1>
 
     <!-- Button for online order -->
-    <a href="orderpage.html">
+    <a href="orderpage.php">
         <button class="btn">Place Online Order</button>
     </a>
 
