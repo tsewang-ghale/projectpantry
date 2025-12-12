@@ -55,8 +55,12 @@ $order = $result->fetch_assoc();
 
     <p><strong>Name:</strong> <?php echo htmlspecialchars($order['name']); ?></p>
     <p><strong>Household Size:</strong> <?php echo htmlspecialchars($order['household_size']); ?></p>
-    <p><strong>Food Items:</strong> <?php echo htmlspecialchars($order['food_items']); ?></p>
-    <p><strong>Toiletries:</strong> <?php echo htmlspecialchars($order['toiletries']); ?></p>
+    <p><strong>Food Items:</strong>
+    <?= empty($order['food_items']) ? "None selected" : $order['food_items']; ?>
+    </p>
+    <p><strong>Toiletries:</strong>
+    <?= empty($order['toiletries']) ? "None selected" : $order['toiletries']; ?>
+    </p>
 
     <button onclick="window.print()">Print Receipt</button>
 </div>
