@@ -1,67 +1,17 @@
 <?php
-// Session Check for Employee Access
-session_start();
-if (!isset($_SESSION['employee_logged_in']) || $_SESSION['employee_logged_in'] !== true) {
-    header('Location: login.php');
-    exit();
-}
+$conn = new mysqli("localhost", "YOUR_USERNAME", "YOUR_PASSWORD", "YOUR_DATABASE");
 
-// Process Order Submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'];
-    $household_size = $_POST['household_size'];
-    $food = isset($_POST['food']) ? $_POST['food'] : [];
-    $toiletries = isset($_POST['toiletries']) ? $_POST['toiletries'] : [];
+$order_id = $_GET['order_id'];
 
-    // Create Order Data
-    $order = [
-        'name' => $name,
-        'household_size' => $household_size,
-        'food' => $food,
-        'toiletries' => $toiletries,
-        'timestamp' => date("Y-m-d H:i:s")
-    ];
-
-    // Save Order to JSON File
-    $orders = file_exists('orders.json') ? json_decode(file_get_contents('orders.json'), true) : [];
-    $orders[] = $order;
-    file_put_contents('orders.json', json_encode($orders, JSON_PRETTY_PRINT));
-}
+$sql = "SELECT * FROM orders WHERE id = $order_id";
+$result = $conn->query($sql);
+$order = $result->fetch_assoc();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Order Confirmation</title>
-</head>
-<body>
-    <h2>Order Confirmation</h2>
-    
-    <?php if (isset($order)): ?>
-        <p>Thank you, <strong><?php echo htmlspecialchars($name); ?></strong>!</p>
-        <p>Household Size: <?php echo htmlspecialchars($household_size); ?></p>
+<h2>Order Receipt</h2>
+<p><strong>Name:</strong> <?php echo $order['name']; ?></p>
+<p><strong>Household Size:</strong> <?php echo $order['household_size']; ?></p>
+<p><strong>Food Items:</strong> <?php echo $order['food_items']; ?></p>
+<p><strong>Toiletries:</strong> <?php echo $order['toiletry_items']; ?></p>
 
-        <h3>Food Items:</h3>
-        <ul>
-            <?php foreach ($food as $item): ?>
-                <li><?php echo htmlspecialchars($item); ?></li>
-            <?php endforeach; ?>
-        </ul>
-
-        <h3>Toiletries:</h3>
-        <ul>
-            <?php foreach ($toiletries as $item): ?>
-                <li><?php echo htmlspecialchars($item); ?></li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>No order data received.</p>
-    <?php endif; ?>
-
-    <!-- Navigation Links -->
-    <a href="store.php">Submit Another Order</a> |
-    <a href="view_orders.php">View All Orders</a> |
-    <a href="logout.php">Logout</a>
-</body>
-</html>
+<button onclick="window.print()">Print Receipt</button>
