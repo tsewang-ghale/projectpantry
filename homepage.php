@@ -43,7 +43,7 @@ session_start();
     <!-- Logo Section -->
     <img src="Regional-Food-Bank-Logo-Stacked-Color-e1644958656502.png" alt="Regional Food Bank Logo" class="logo">
 
-    <h1>Welcome to the Online Ordering System</h1>
+    <h1>Welcome to the Online Ordering System for Regional Food Bank Of Oklahoma</h1>
 
     <!-- Button for online order -->
     <a href="orderpage.html">
