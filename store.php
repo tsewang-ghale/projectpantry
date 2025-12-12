@@ -1,31 +1,35 @@
 <?php
-// Connect to database
-$conn = new mysqli("localhost", "tsewangg_pantryuser", "smd19Tse@2001", "tsewangg_projectpantry");
+// Database connection
+$servername = "localhost";
+$username = "tsewangg_pantryuser";
+$password = "smd19Tse@2001";
+$database = "tsewangg_projectpantry";
 
-if ($conn->connect_error) {
+$conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_errno) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Collect form data
-$name = $_POST['name'];
-$household = $_POST['household_size'];
+// Only process form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-$food_items = isset($_POST['food']) ? implode(", ", $_POST['food']) : "";
-$toiletry_items = isset($_POST['toiletries']) ? implode(", ", $_POST['toiletries']) : "";
+    // Get form values safely
+    $name = $_POST["name"] ?? '';
+    $household_size = $_POST["household_size"] ?? '';
+    $food_items = isset($_POST["food"]) ? implode(", ", $_POST["food"]) : '';
+    $toiletries = isset($_POST["toiletries"]) ? implode(", ", $_POST["toiletries"]) : '';
 
-// Insert into database
-$sql = "INSERT INTO orders (name, household_size, food_items, toiletry_items)
-        VALUES ('$name', '$household', '$food_items', '$toiletry_items')";
+    // Insert into database
+    $sql = "INSERT INTO orders (name, household_size, food_items, toiletries)
+            VALUES ('$name', '$household_size', '$food_items', '$toiletries')";
 
-if ($conn->query($sql) === TRUE) {
-    $order_id = $conn->insert_id; // Get the latest order ID
-    
-    // Redirect to thank you page with order ID
-    header("Location: thankyou.php?order_id=$order_id");
-    exit();
-} else {
-    echo "Error: " . $conn->error;
+    if ($conn->query($sql)) {
+        header("Location: thankyou.php");
+        exit();
+    } else {
+        echo "Error: " . $conn->error;
+    }
 }
 
-$conn->close();
 ?>
