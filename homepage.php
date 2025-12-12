@@ -46,7 +46,7 @@ session_start();
     <h1>Welcome to the Online Ordering System</h1>
 
     <!-- Button for online order -->
-    <a href="index.html">
+    <a href="orderpage.html">
         <button class="btn">Place Online Order</button>
     </a>
 
