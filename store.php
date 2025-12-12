@@ -11,7 +11,6 @@ if ($conn->connect_errno) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Only process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = $_POST["name"] ?? '';
@@ -19,20 +18,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $food_items = isset($_POST["food"]) ? implode(", ", $_POST["food"]) : '';
     $toiletries = isset($_POST["toiletries"]) ? implode(", ", $_POST["toiletries"]) : '';
 
-    $sql = "INSERT INTO orders (name, household_size, food_items, toiletries)
-            VALUES ('$name', '$household_size', '$food_items', '$toiletries')";
+    // Use prepared statement to prevent SQL injection
+    $stmt = $conn->prepare("
+        INSERT INTO orders (name, household_size, food_items, toiletries)
+        VALUES (?, ?, ?, ?)
+    ");
+    $stmt->bind_param("ssss", $name, $household_size, $food_items, $toiletries);
 
-    if ($conn->query($sql)) {
+    if ($stmt->execute()) {
+        // Get the auto-generated order ID
+        $order_id = $stmt->insert_id;
 
-        // Get the ID of the newly created order
-        $order_id = $conn->insert_id;
-
-        // Redirect to thank you page WITH order_id
+        // Redirect WITH the order ID
         header("Location: thankyou.php?order_id=" . $order_id);
         exit();
-
     } else {
-        echo "Error: " . $conn->error;
+        echo "Database error: " . $conn->error;
     }
 }
 ?>
