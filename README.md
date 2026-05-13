@@ -1,39 +1,59 @@
-# Project Pantry - Online Food Pantry Ordering System
+# Project Pantry
 
-🌐 **Live Website**: [https://projectpantry.tsewangghale.oucreate.com/](https://projectpantry.tsewangghale.oucreate.com/)
+Project Pantry is a PHP web application for browsing food pantry items, submitting online orders, and reviewing submitted orders. The project was built as a practical web development exercise focused on forms, page routing, basic order flow, and database-backed record keeping.
 
-## 📌 Overview
-Project Pantry is a web-based application that allows users to browse available food pantry inventory, place online orders, and print order receipts.  
-The goal of this project is to simplify the ordering process for food pantry users and streamline order management for administrators.
+## Features
 
-## ✨ Features
-- 📋 **Inventory List** – Displays available pantry items  
-- 🛒 **Online Ordering** – Users can select items and submit orders  
-- 🖨 **Printable Orders** – Orders can be printed for record-keeping  
-- 🔐 **User Login/Logout** – Basic authentication for users  
-- ✅ **Order Confirmation** – A thank-you page confirms successful submissions  
-- 📂 **Order Management** – Admins can view all submitted orders  
+- Landing page and homepage navigation
+- Food pantry item list
+- Online order form with household and item selection fields
+- Order submission handling through PHP
+- Thank-you confirmation page
+- Printable order page
+- Admin-style submitted order view
+- Login and logout pages
 
-## 🗂 Project Structure
-- `index.html` – Landing page  
-- `home.php` – Main home page after login  
-- `login.php` / `logout.php` – Authentication pages  
-- `foodpantry_list.php` – Displays the pantry inventory  
-- `store.php` – Stores order submissions  
-- `view_orders.php` – View submitted orders (for admins)  
-- `print_order.php` – Print order receipts  
-- `thankyou.php` – Thank-you page after order submission  
+## Technologies
 
-## 🛠 Technologies Used
-- **Frontend**: HTML, CSS  
-- **Backend**: PHP  
-- **Database**: MySQL (for storing inventory & orders)  
-- **Hosting**: OU Create  
+- PHP
+- HTML
+- Bootstrap
+- MySQL
+- OU Create hosting
 
-## 🚀 Getting Started
-1. Visit the live project:  
-   👉 [Project Pantry Website](https://projectpantry.tsewangghale.oucreate.com/)  
+## Project Structure
 
-2. Or clone this repository:
-   ```bash
-   git clone https://github.com/your-username/project-pantry.git
+| File | Purpose |
+| --- | --- |
+| `index.php` | Redirects visitors to the homepage |
+| `homepage.php` | Main landing/home page |
+| `about.php` | About page for the pantry project |
+| `login.php` / `logout.php` | Basic authentication pages |
+| `foodpantry_list.php` | Displays available pantry items |
+| `orderpage.php` | Online order form |
+| `store.php` | Processes submitted order data |
+| `thankyou.php` | Confirmation page after submission |
+| `view_orders.php` | Displays submitted orders |
+| `print_order.php` | Print-friendly order output |
+| `Logo.png` | Project logo asset |
+
+## How to View
+
+Live site:
+
+https://projectpantry.tsewangghale.oucreate.com/
+
+Local setup requires a PHP server and a MySQL database configured for the order and pantry data used by the application.
+
+## Skills Demonstrated
+
+- PHP form handling
+- Multi-page web application structure
+- Basic database workflow
+- Bootstrap-based interface design
+- Order management flow
+
+## Author
+
+Tsewang Diki Ghale  
+GitHub: [tsewang-ghale](https://github.com/tsewang-ghale)
